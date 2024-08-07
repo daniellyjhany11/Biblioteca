@@ -4,23 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\livro;
+use App\Models\Livro;
 use Illuminate\Support\Facades\Auth;
-
+use App\Models\User;
 
 class LivroController extends Controller
 {
     public function index()
     {
-        $livros = Auth::user()->livros;
         $livros = Livro::paginate(10);
         return view('dashboard', compact('livros'));
     }
-
-    //public function show(Livro $livro)
-    //{
-    //    return view('livros.show', compact('livro'));
-    //} DA ARYANNE
 
     public function create()
     {
@@ -44,9 +38,6 @@ class LivroController extends Controller
 
     public function edit(Livro $livro)
     {
-        if ($livro->user_id != Auth::id()) {
-            return redirect()->route('dashboard');
-        }
         return view('livros_edit', compact('livro'));
     }
 
@@ -71,9 +62,6 @@ class LivroController extends Controller
 
     public function destroy(Livro $livro)
     {
-        if ($livro->user_id != Auth::id()) {
-            return redirect()->route('dashboard');
-        }
 
         $livro->delete();
 

@@ -8,8 +8,9 @@
 <body>
 <div class="container mt-5">
     <h2>Adicionar Livro</h2>
-    <form method="POST" action="{{ route('livros.update') }}">
+    <form method="POST" action="{{ route('livros.update', $livro->id) }}">
         @csrf
+        @method('PUT')
         <div class="form-group">
             <label >Autor:</label>
             <input type="text" class="form-control" id="autor" name="autor" value="{{ $livro->autor }}">

@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('edicao')->nullable();
             $table->string('editora')->nullable();
             $table->year('ano_publicado')->nullable();
-           
-    
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
