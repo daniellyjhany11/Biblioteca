@@ -1,14 +1,15 @@
 <x-app-layout>
     
-    <link href="../../public/css/campo.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Sua biblioteca pessoal.') }}
         </h2>
+
+        <title>Biblioteca</title>
         
         <a href="{{ route('livros.create') }}" class="btn btn-primary mb-3 mt-6">Adicionar Livro</a>
-        <title>Biblioteca</title>
+
         <style type="text/css">
             .py-12 {
                 background-image: linear-gradient(#20434b, #d9bf);
@@ -18,30 +19,32 @@
                 height: 100%;
                 padding: 100px 0;
             }
-            
             .mt-1 {
                 margin-left: 30px;
                 margin-right: 63px;
             }
+            table, td, th {
+                text-align: center;
+            }
+
+            @media (max-width: 450px) {}
+            @media (min-width: 768px) and (max-width: 1024px) {}
+            @media (orientation: landscape) {} 
         </style>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-        
-
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 font-semibold text-xl">
                     {{ __("Meus livros:") }}
                 </div>
 
-                <table class="table table-bordered">
+                    <table class="table table-bordered">
                         <thead>
-                            <img src="" alt="">
                             <tr>
                                 <th>Id</th>
-                                <!-- img??^^ -->
                                 <th>Autor</th>
                                 <th>Título</th>
                                 <th>Subtítulo</th>
@@ -86,7 +89,6 @@
                         {{ $livros->links('pagination::bootstrap-5') }}
                     </div>
                 
-                </div>
             </div>
         </div>
     </div>
